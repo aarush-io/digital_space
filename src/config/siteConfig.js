@@ -1,10 +1,11 @@
 // src/config/siteConfig.js
+
 const siteConfig = {
   name: "Aarush Sagar",
   handle: "@aarush",
   bio: "Gen-Z developer building AI tools and real-time web apps. Focused on full-stack, Web3 and futuristic products.",
   location: "Delhi NCR, India",
-  profileImage: "/images/avatar.png",
+  profileImage: "/avatar.png",
   badges: ["Student", "Full-Stack", "AI", "Builder", "Open Source"],
 
   discordId: "551092096312934401",
