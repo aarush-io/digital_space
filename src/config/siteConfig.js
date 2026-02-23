@@ -1,114 +1,101 @@
-// src/config/siteConfig.js
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    artist: "Mall Grab",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                          cover: "https://picsum.photos/seed/mg4/200/200",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                src: "",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    },
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        {
+               // src/config/siteConfig.js
 // ============================================================
 // SINGLE SOURCE OF TRUTH — edit everything here
 // ============================================================
 
 const siteConfig = {
   // ── Identity ────────────────────────────────────────────
-    name: "Aarush Sagar",
-      handle: "@aarush",
-        bio: "Gen-Z developer building AI tools and real-time web apps. Focused on full-stack, Web3 and futuristic products.",
-          location: "Delhi NCR, India",
-            profileImage: "https://api.dicebear.com/7.x/avataaars/svg?seed=aarush&backgroundColor=b6e3f4",
-              badges: ["Student", "Full-Stack", "AI", "Builder", "Open Source"],
+  name: "Aarush Sagar",
+  handle: "@aarush",
+  bio: "Gen-Z developer building AI tools and real-time web apps. Focused on full-stack, Web3 and futuristic products.",
+  location: "Delhi NCR, India",
+  profileImage:
+    "https://api.dicebear.com/7.x/avataaars/svg?seed=aarush&backgroundColor=b6e3f4",
+  badges: ["Student", "Full-Stack", "AI", "Builder", "Open Source"],
 
-                // ── APIs ─────────────────────────────────────────────────
-                  discordId: "551092096312934401",
-                    githubUsername: "aarush-io",
+  // ── APIs ─────────────────────────────────────────────────
+  discordId: "551092096312934401",
+  githubUsername: "aarush-io",
 
-                      // ── Social Links ─────────────────────────────────────────
-                        socials: [
-                            {
-                                  id: "github",
-                                        label: "GitHub",
-                                              href: "https://github.com/aarush-io",
-                                                    color: "#e2e8f0",
-                                                        },
-                                                            {
-                                                                  id: "twitter",
-                                                                        label: "Twitter / X",
-                                                                              href: "https://x.com/aarush_io",
-                                                                                    color: "#60a5fa",
-                                                                                        },
-                                                                                            {
-                                                                                                  id: "instagram",
-                                                                                                        label: "Instagram",
-                                                                                                              href: "https://instagram.com/og_aarush",
-                                                                                                                    color: "#f472b6",
-                                                                                                                        },
-                                                                                                                            {
-                                                                                                                                  id: "discord",
-                                                                                                                                        label: "Discord",
-                                                                                                                                              href: "https://discord.com/users/551092096312934401",
-                                                                                                                                                    color: "#818cf8",
-                                                                                                                                                        },
-                                                                                                                                                            {
-                                                                                                                                                                  id: "email",
-                                                                                                                                                                        label: "Email",
-                                                                                                                                                                              href: "mailto:sagaraarush10@gmail.com",
-                                                                                                                                                                                    color: "#34d399",
-                                                                                                                                                                                        },
-                                                                                                                                                                                          ],
+  // ── Social Links ─────────────────────────────────────────
+  socials: [
+    {
+      id: "github",
+      label: "GitHub",
+      href: "https://github.com/aarush-io",
+      color: "#e2e8f0",
+    },
+    {
+      id: "twitter",
+      label: "Twitter / X",
+      href: "https://x.com/aarush_io",
+      color: "#60a5fa",
+    },
+    {
+      id: "instagram",
+      label: "Instagram",
+      href: "https://instagram.com/og_aarush",
+      color: "#f472b6",
+    },
+    {
+      id: "discord",
+      label: "Discord",
+      href: "https://discord.com/users/551092096312934401",
+      color: "#818cf8",
+    },
+    {
+      id: "email",
+      label: "Email",
+      href: "mailto:sagaraarush10@gmail.com",
+      color: "#34d399",
+    },
+  ],
 
-                                                                                                                                                                                            // ── About Me ─────────────────────────────────────────────
-                                                                                                                                                                                              about: {
-                                                                                                                                                                                                  whoAmI:
-                                                                                                                                                                                                        "I'm a 16-year-old student from India focused on becoming a full-stack developer. I build web apps, experiment with AI and ship products for students and Gen-Z.",
-                                                                                                                                                                                                            building:
-                                                                                                                                                                                                                  "AI-powered student tools, a battle-royale quiz platform for JEE aspirants and real-time anonymous chat apps.",
-                                                                                                                                                                                                                      learning:
-                                                                                                                                                                                                                            "Full-stack system design, scalable backends, real-time architecture and the path to Web3.",
-                                                                                                                                                                                                                                techStack: [
-                                                                                                                                                                                                                                      "React",
-                                                                                                                                                                                                                                            "Tailwind",
-                                                                                                                                                                                                                                                  "Node.js",
-                                                                                                                                                                                                                                                        "MongoDB",
-                                                                                                                                                                                                                                                              "Firebase",
-                                                                                                                                                                                                                                                                    "Flutter",
-                                                                                                                                                                                                                                                                          "Python",
-                                                                                                                                                                                                                                                                                "JavaScript",
-                                                                                                                                                                                                                                                                                    ],
-                                                                                                                                                                                                                                                                                      },
+  // ── About Me ─────────────────────────────────────────────
+  about: {
+    whoAmI:
+      "I'm a 16-year-old student from India focused on becoming a full-stack developer. I build web apps, experiment with AI and ship products that solve real world problems.",
+    building:
+      "AI-powered tools",
+    learning:
+      "Full-stack system design, scalable backends, real-time architecture and the path to Web3.",
+    techStack: [
+      "React",
+      "Tailwind",
+      "Node.js",
+      "MongoDB",
+      "Firebase",
+      "Flutter",
+      "Python",
+      "JavaScript",
+    ],
+  },
 
-                                                                                                                                                                                                                                                                                        // ── Currently ─────────────────────────────────────────────
-                                                                                                                                                                                                                                                                                          currently: {
-                                                                                                                                                                                                                                                                                              building: "AI productivity tools & real-time web apps",
-                                                                                                                                                                                                                                                                                                  studying: "Class 11 + full-stack development roadmap",
-                                                                                                                                                                                                                                                                                                      listening: "Desi Hip Hop",
-                                                                                                                                                                                                                                                                                                        },
+  // ── Currently ─────────────────────────────────────────────
+  currently: {
+    building: "AI productivity tools & real-time web apps",
+    studying: "Class 11 + full-stack development",
+    listening: "Dark Pop • Indie • Desi Hip Hop",
+  },
 
-                                                                                                                                                                                                                                                                                                          // ── Music Playlist ────────────────────────────────────────
-                                                                                                                                                                                                                                                                                                            playlist: [
-                                                                                                                                                                                                                                                                                                                {
-                                                                                                                                                                                                                                                                                                                      id: 1,
-                                                                                                                                                                                                                                                                                                                            title: "LesAlpx",
-                                                                                                                                                                                                                                                                                                                                  artist: "Floating Points",
-                                                                                                                                                                                                                                                                                                                                        cover: "https://picsum.photos/seed/fp1/200/200",
-                                                                                                                                                                                                                                                                                                                                              src: "",
-                                                                                                                                                                                                                                                                                                                                                  },
-                                                                                                                                                                                                                                                                                                                                                      {
-                                                                                                                                                                                                                                                                                                                                                            id: 2,
-                                                                                                                                                                                                                                                                                                                                                                  title: "Emerald Rush",
-                                                                                                                                                                                                                                                                                                                                                                        artist: "Jon Hopkins",
-                                                                                                                                                                                                                                                                                                                                                                              cover: "https://picsum.photos/seed/jh2/200/200",
-                                                                                                                                                                                                                                                                                                                                                                                    src: "",
-                                                                                                                                                                                                                                                                                                                                                                                        },
-                                                                                                                                                                                                                                                                                                                                                                                            {
-                                                                                                                                                                                                                                                                                                                                                                                                  id: 3,
-                                                                                                                                                                                                                                                                                                                                                                                                        title: "Glue",
-                                                                                                                                                                                                                                                                                                                                                                                                              artist: "Bicep",
-                                                                                                                                                                                                                                                                                                                                                                                                                    cover: "https://picsum.photos/seed/bc3/200/200",
-                                                                                                                                                                                                                                                                                                                                                                                                                          src: "",
-                                                                                                                                                                                                                                                                                                                                                                                                                              },
-                                                                                                                                                                                                                                                                                                                                                                                                                                  {
-                                                                                                                                                                                                                                                                                                                                                                                                                                        id: 4,
-                                                                                                                                                                                                                                                                                                                                                                                                                                              title: "Sundial",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    artist: "Mall Grab",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                          cover: "https://picsum.photos/seed/mg4/200/200",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                src: "",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    },
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                              id: 5,
+  // ── Music Playlist ────────────────────────────────────────
+  playlist: [
+    {
+      id: 1,
+      title: "Cruise Control",
+      artist: "Lyn Lapid & Whethan",
+      cover: "/covers/cruisecontrol.jpg",
+      src: "/audio/cruisecontrol.mp3",
+    },
+  ],
+};
+
+export default siteConfig;                                                                                                                                                                                                                                                                                                                                                                                                                                                               id: 5,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     title: "Age of",
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           artist: "FKA Twigs",
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 cover: "https://picsum.photos/seed/fk5/200/200",
