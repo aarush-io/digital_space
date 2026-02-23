@@ -1,0 +1,22 @@
+import { Counter } from "counterapi";
+
+const counter = new Counter({
+  workspace: "aarushsagar",
+  token: process.env.COUNTER_API_KEY,
+});
+
+export async function handler() {
+  try {
+    const result = await counter.up("profile-views");
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ views: result.data }),
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: error.message }),
+    };
+  }
+}
