@@ -1,7 +1,7 @@
 import { Counter } from "counterapi";
 
 const counter = new Counter({
-  workspace: "aarushsagar",
+  workspace: "digitalspace",
   token: process.env.COUNTER_API_KEY,
 });
 
