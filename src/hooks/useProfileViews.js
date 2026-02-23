@@ -6,7 +6,7 @@ export function useProfileViews() {
   useEffect(() => {
     fetch("/.netlify/functions/views")
       .then((res) => res.json())
-      .then((data) => setViews(data.views))
+      .then((data) => setViews(data?.views ?? 0))
       .catch(() => setViews(0));
   }, []);
 
