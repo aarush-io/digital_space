@@ -4,9 +4,9 @@ export function useProfileViews() {
   const [views, setViews] = useState(0);
 
   useEffect(() => {
-    fetch("https://api.countapi.xyz/hit/aarushsagar/digitalspace")
+    fetch("/.netlify/functions/views")
       .then((res) => res.json())
-      .then((data) => setViews(data.value))
+      .then((data) => setViews(data.views))
       .catch(() => setViews(0));
   }, []);
 
