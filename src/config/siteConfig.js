@@ -1,5 +1,4 @@
 // src/config/siteConfig.js
-
 const siteConfig = {
   name: "Aarush Sagar",
   handle: "@aarush",
