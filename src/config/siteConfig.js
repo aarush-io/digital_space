@@ -4,8 +4,7 @@ const siteConfig = {
   handle: "@aarush",
   bio: "Gen-Z developer building AI tools and real-time web apps. Focused on full-stack, Web3 and futuristic products.",
   location: "Delhi NCR, India",
-  profileImage:
-    "https://api.dicebear.com/7.x/avataaars/svg?seed=aarush&backgroundColor=b6e3f4",
+  profileImage: "/images/avatar.png",
   badges: ["Student", "Full-Stack", "AI", "Builder", "Open Source"],
 
   discordId: "551092096312934401",
