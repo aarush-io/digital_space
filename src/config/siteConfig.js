@@ -1,15 +1,6 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    artist: "Mall Grab",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                          cover: "https://picsum.photos/seed/mg4/200/200",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                src: "",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    },
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        {
-               // src/config/siteConfig.js
-// ============================================================
-// SINGLE SOURCE OF TRUTH — edit everything here
-// ============================================================
+// src/config/siteConfig.js
 
 const siteConfig = {
-  // ── Identity ────────────────────────────────────────────
   name: "Aarush Sagar",
   handle: "@aarush",
   bio: "Gen-Z developer building AI tools and real-time web apps. Focused on full-stack, Web3 and futuristic products.",
@@ -18,11 +9,9 @@ const siteConfig = {
     "https://api.dicebear.com/7.x/avataaars/svg?seed=aarush&backgroundColor=b6e3f4",
   badges: ["Student", "Full-Stack", "AI", "Builder", "Open Source"],
 
-  // ── APIs ─────────────────────────────────────────────────
   discordId: "551092096312934401",
   githubUsername: "aarush-io",
 
-  // ── Social Links ─────────────────────────────────────────
   socials: [
     {
       id: "github",
@@ -56,12 +45,10 @@ const siteConfig = {
     },
   ],
 
-  // ── About Me ─────────────────────────────────────────────
   about: {
     whoAmI:
       "I'm a 16-year-old student from India focused on becoming a full-stack developer. I build web apps, experiment with AI and ship products that solve real world problems.",
-    building:
-      "AI-powered tools",
+    building: "AI-powered tools",
     learning:
       "Full-stack system design, scalable backends, real-time architecture and the path to Web3.",
     techStack: [
@@ -76,14 +63,12 @@ const siteConfig = {
     ],
   },
 
-  // ── Currently ─────────────────────────────────────────────
   currently: {
     building: "AI productivity tools & real-time web apps",
     studying: "Class 11 + full-stack development",
     listening: "Dark Pop • Indie • Desi Hip Hop",
   },
 
-  // ── Music Playlist ────────────────────────────────────────
   playlist: [
     {
       id: 1,
@@ -95,20 +80,7 @@ const siteConfig = {
   ],
 };
 
-export default siteConfig;                                                                                                                                                                                                                                                                                                                                                                                                                                                               id: 5,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    title: "Age of",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          artist: "FKA Twigs",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                cover: "https://picsum.photos/seed/fk5/200/200",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      src: "",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          },
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    id: 6,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          title: "Lavender",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                artist: "The Blaze",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      cover: "https://picsum.photos/seed/tb6/200/200",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            src: "",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                },
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    {
+export default siteConfig;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    {
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           id: 7,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 title: "Carbon",
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       artist: "Bonobo",
