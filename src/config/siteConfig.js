@@ -64,7 +64,8 @@ const siteConfig = {
 
   currently: {
     building: "AI productivity tools & real-time web apps",
-    studying: "Class 11 + full-stack development",
+    studying: "Class 12 • full-stack development",
+    learning: "Music-making ",
     listening: "Dark Pop • Indie • Desi Hip Hop",
   },
 
