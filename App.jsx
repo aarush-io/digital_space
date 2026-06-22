@@ -23,7 +23,7 @@ const siteConfig = {
   githubUsername: "torvalds",        // Replace with your username
 
   socials: [
-    { id: "github",    label: "GitHub",    href: "https://github.com/torvalds",        color: "#e2e8f0" },
+    { id: "github",    label: "GitHub",    href: "https://github.com/",        color: "#e2e8f0" },
     { id: "twitter",   label: "Twitter/X", href: "https://x.com/",                    color: "#60a5fa" },
     { id: "instagram", label: "Instagram", href: "https://instagram.com/",             color: "#f472b6" },
     { id: "discord",   label: "Discord",   href: "https://discord.com/",               color: "#818cf8" },
@@ -42,82 +42,7 @@ const siteConfig = {
     studying: "Rust & Operating Systems (CS 162)",
     listening: "Floating Points, Jon Hopkins, Bicep",
   },
-
-  playlist: [
-    { id: 1, title: "LesAlpx",          artist: "Floating Points",   cover: "https://picsum.photos/seed/fp1/200",   src: "" },
-    { id: 2, title: "Emerald Rush",      artist: "Jon Hopkins",       cover: "https://picsum.photos/seed/jh2/200",   src: "" },
-    { id: 3, title: "Glue",             artist: "Bicep",              cover: "https://picsum.photos/seed/bc3/200",   src: "" },
-    { id: 4, title: "Sundial",          artist: "Mall Grab",          cover: "https://picsum.photos/seed/mg4/200",   src: "" },
-    { id: 5, title: "Age of",           artist: "FKA Twigs",          cover: "https://picsum.photos/seed/fk5/200",   src: "" },
-    { id: 6, title: "Lavender",         artist: "The Blaze",          cover: "https://picsum.photos/seed/tb6/200",   src: "" },
-    { id: 7, title: "Carbon",           artist: "Bonobo",             cover: "https://picsum.photos/seed/bn7/200",   src: "" },
-    { id: 8, title: "Before the Dawn",  artist: "Caribou",            cover: "https://picsum.photos/seed/cb8/200",   src: "" },
-    { id: 9, title: "Circles",          artist: "Four Tet",           cover: "https://picsum.photos/seed/ft9/200",   src: "" },
-    { id:10, title: "Teardrop",         artist: "Massive Attack",     cover: "https://picsum.photos/seed/ma10/200",  src: "" },
-  ],
 };
-
-// =============================================================================
-// src/hooks/useMusicPlayer.js
-// =============================================================================
-function useMusicPlayer(playlist) {
-  const audioRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(() => Math.floor(Math.random() * playlist.length));
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const lastIndexRef = useRef(currentIndex);
-
-  const getNextIndex = useCallback(() => {
-    let next;
-    do { next = Math.floor(Math.random() * playlist.length); }
-    while (next === lastIndexRef.current && playlist.length > 1);
-    return next;
-  }, [playlist.length]);
-
-  const currentTrack = playlist[currentIndex];
-
-  const togglePlay = useCallback(() => {
-    if (!audioRef.current) return;
-    if (isPlaying) { audioRef.current.pause(); setIsPlaying(false); }
-    else { audioRef.current.play().catch(() => {}); setIsPlaying(true); }
-  }, [isPlaying]);
-
-  const skipNext = useCallback(() => {
-    lastIndexRef.current = currentIndex;
-    setCurrentIndex(getNextIndex());
-    setIsPlaying(true);
-  }, [currentIndex, getNextIndex]);
-
-  const seek = useCallback((pct) => {
-    if (!audioRef.current || !duration) return;
-    audioRef.current.currentTime = pct * duration;
-  }, [duration]);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    const onTime = () => { setCurrentTime(audio.currentTime); setProgress(audio.currentTime / (audio.duration || 1)); };
-    const onMeta = () => setDuration(audio.duration || 0);
-    const onEnd  = () => skipNext();
-    audio.addEventListener("timeupdate",    onTime);
-    audio.addEventListener("loadedmetadata", onMeta);
-    audio.addEventListener("ended",          onEnd);
-    return () => { audio.removeEventListener("timeupdate", onTime); audio.removeEventListener("loadedmetadata", onMeta); audio.removeEventListener("ended", onEnd); };
-  }, [skipNext]);
-
-  useEffect(() => {
-    if (audioRef.current && currentTrack.src) {
-      audioRef.current.src = currentTrack.src;
-      if (isPlaying) audioRef.current.play().catch(() => {});
-    }
-  }, [currentIndex]);
-
-  const fmt = (s) => `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,"0")}`;
-
-  return { audioRef, currentTrack, isPlaying, progress, currentTime, duration, togglePlay, skipNext, seek, fmt };
-}
 
 // =============================================================================
 // src/hooks/useDiscord.js
@@ -605,7 +530,6 @@ export default function App() {
 
         <AboutCard about={siteConfig.about} />
         <CurrentlyCard currently={siteConfig.currently} />
-        <MusicPlayer playlist={siteConfig.playlist} />
 
         {/* Footer */}
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}

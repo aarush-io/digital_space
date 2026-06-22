@@ -12,7 +12,6 @@ import DiscordCard   from "./components/discord/DiscordCard";
 import GitHubCard    from "./components/github/GitHubCard";
 import AboutCard     from "./components/about/AboutCard";
 import CurrentlyCard from "./components/currently/CurrentlyCard";
-import MusicPlayer   from "./components/music/MusicPlayer";
 
 // Hook
 import { useProfileViews } from "./hooks/useProfileViews";
@@ -57,8 +56,6 @@ export default function App() {
           <AboutCard about={siteConfig.about} />
 
           <CurrentlyCard currently={siteConfig.currently} />
-
-          <MusicPlayer playlist={siteConfig.playlist} />
 
         </div>
 

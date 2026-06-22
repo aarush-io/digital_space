@@ -68,16 +68,6 @@ const siteConfig = {
     learning: "Music-making ",
     listening: "Dark Pop • Indie • Desi Hip Hop",
   },
-
-  playlist: [
-    {
-      id: 1,
-      title: "Cruise Control",
-      artist: "Lyn Lapid & Whethan",
-      cover: "/covers/cruisecontrol.jpg",
-      src: "/audio/cruisecontrol.mp3",
-    },
-  ],
 };
 
 export default siteConfig;
