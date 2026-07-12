@@ -1,0 +1,18 @@
+# netlify.toml
+# Place at: the ROOT of your repo (same level as package.json)
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# SPA fallback: lets React Router handle client-side routes like
+# /why-i-dont-like-my-country directly (otherwise a hard refresh or typed
+# URL on that path would 404, since there's no real dist/why-i-dont-like-my-country/index.html).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
