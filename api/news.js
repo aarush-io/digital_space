@@ -1,21 +1,23 @@
-// api/news.js
+// netlify/functions/news.js
 //
-// Vercel serverless function — place at the ROOT of your repo (not inside src/),
-// i.e. exactly at:  /api/news.js
+// Place at: netlify/functions/news.js
+// (Delete or ignore the old api/news.js — that was written for Vercel and
+// won't run on Netlify. This file replaces it.)
 //
-// Vercel auto-detects any file under /api as a serverless function regardless
-// of frontend framework, so this works alongside your existing Vite build
-// with zero extra config. Locally, `vercel dev` will serve it at
-// http://localhost:3000/api/news. Plain `vite dev` does NOT run this file —
-// see the README note at the bottom of this file for local testing options.
+// This is a Netlify Function using the modern "v2" format (Web-standard
+// Request/Response, configured with an explicit `path` below), so it's
+// reachable at /api/news with no extra redirect rules needed for the route
+// itself. You still need netlify.toml (provided alongside this file) so
+// Netlify knows where your functions live and to serve index.html for
+// client-side routes.
 //
 // Responsibilities:
 //   - Fetch one Google News RSS feed per category (parallel, fault-tolerant)
 //   - Parse the XML
-//   - Classify each article by keyword scoring (refines the feed's own category hint)
+//   - Classify each article by keyword scoring (refines the feed's category hint)
 //   - De-duplicate by article link
 //   - Cache the merged result in memory for CACHE_TTL_MS
-//   - Serve /api/news -> { articles, updatedAt, cached, failedCategories }
+//   - Serve GET /api/news -> { articles, updatedAt, cached, failedCategories }
 
 import { XMLParser } from "fast-xml-parser";
 
@@ -43,8 +45,6 @@ const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
 const MAX_PER_CATEGORY = 20;
 
 // Keyword sets used to refine/override the category a feed was fetched under.
-// This catches articles that Google returned for one query but that read
-// (by their own title/description) as belonging to a different category.
 const KEYWORDS = {
   Corruption: ["corruption", "bribe", "bribery", "scam", "scandal", "graft", "kickback", "embezzle", "fraud"],
   Crime: ["crime", "murder", "assault", "robbery", "kidnap", "gang", "violence", "shooting", "theft", "arrested"],
@@ -130,18 +130,27 @@ async function fetchCategoryFeed(category, query) {
   });
 }
 
-// Module-level cache. Persists across requests on a warm serverless
-// instance, and is naturally rebuilt on cold starts — which, combined with
-// the 1-hour TTL, is enough for a personal dashboard's "refresh hourly" goal.
+function jsonResponse(body, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": "public, max-age=0, s-maxage=3600, stale-while-revalidate=300",
+    },
+  });
+}
+
+// Module-level cache. Persists across invocations on a warm function
+// instance, and naturally rebuilds on cold starts — combined with the
+// 1-hour TTL, that's enough for a personal dashboard's hourly-refresh goal.
 let cache = null; // { articles, updatedAt, timestamp, failedCategories }
 
-export default async function handler(req, res) {
+export default async (req, context) => {
   try {
     const now = Date.now();
 
     if (cache && now - cache.timestamp < CACHE_TTL_MS) {
-      res.setHeader("Cache-Control", "public, max-age=0, s-maxage=3600, stale-while-revalidate=300");
-      return res.status(200).json({
+      return jsonResponse({
         articles: cache.articles,
         updatedAt: cache.updatedAt,
         cached: true,
@@ -168,7 +177,7 @@ export default async function handler(req, res) {
         }
       } else {
         failedCategories.push(category);
-        console.error(`[api/news] ${category} feed failed:`, result.reason?.message || result.reason);
+        console.error(`[news function] ${category} feed failed:`, result.reason?.message || result.reason);
       }
     });
 
@@ -177,25 +186,27 @@ export default async function handler(req, res) {
     const updatedAt = new Date().toISOString();
     cache = { articles: merged, updatedAt, timestamp: now, failedCategories };
 
-    res.setHeader("Cache-Control", "public, max-age=0, s-maxage=3600, stale-while-revalidate=300");
-    return res.status(200).json({ articles: merged, updatedAt, cached: false, failedCategories });
+    return jsonResponse({ articles: merged, updatedAt, cached: false, failedCategories });
   } catch (err) {
-    console.error("[api/news] fatal error:", err);
-    // If we have any stale cache at all, prefer serving it over a hard error.
+    console.error("[news function] fatal error:", err);
     if (cache) {
-      return res.status(200).json({
+      return jsonResponse({
         articles: cache.articles,
         updatedAt: cache.updatedAt,
         cached: true,
         failedCategories: cache.failedCategories,
       });
     }
-    return res.status(500).json({ error: "Failed to load news right now. Please try again shortly." });
+    return jsonResponse({ error: "Failed to load news right now. Please try again shortly." }, 500);
   }
-}
+};
+
+// This registers the function at /api/news directly — no separate redirect
+// rule needed for the API route itself.
+export const config = { path: "/api/news" };
 
 // ---- Local dev note ---------------------------------------------------------
-// `npm run dev` (plain Vite) does not execute /api functions. To test this
-// endpoint locally, install the Vercel CLI (`npm i -g vercel`) and run
-// `vercel dev` instead — it serves both the Vite frontend and this function
-// together on the same port. In production on Vercel, no extra config needed.
+// Plain `npm run dev` (Vite) does not run Netlify Functions. To test this
+// locally, install the Netlify CLI (`npm i -g netlify-cli`) and run
+// `netlify dev` from the project root instead — it serves the Vite frontend
+// and this function together on one port (usually http://localhost:8888).
